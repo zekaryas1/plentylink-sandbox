@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="tags-input.css" />
     <title>PlentyLink.com</title>
   </head>
   <body>
@@ -131,15 +132,13 @@
             Free Hosting
           </a>
           <div class="sidebar-divider"></div>
-          <a href="#" class="sidebar-link sidebar-link-with-icon">
+          <a href="#modal-2" class="sidebar-link sidebar-link-with-icon">
             <span class="sidebar-icon">
               <i class="fa fa-user-o" aria-hidden="true"></i>
             </span>
-            <div>
-              <a class="btn btn-dark" href="#modal-2">
-                My links
-              </a>
-            </div>
+            <button class="btn btn-dark">
+              My links
+            </button>
           </a>
         </div>
       </div>
@@ -304,26 +303,45 @@
                   method="..."
                   class="w-full h-full p-20 pt-0 m-auto"
                 >
-                  <input
-                    type="url"
-                    class="form-control mb-5"
-                    id="full-name"
-                    placeholder="Website url"
-                    required="required"
-                  />
                   <div class="form-group">
+                    <label for="website_url" class="required"
+                      >Website url</label
+                    >
+                    <input
+                      type="url"
+                      class="form-control mb-5"
+                      id="Website url"
+                      placeholder="Website url"
+                      required="required"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="main_tag" class="required">Main tag</label>
                     <select
                       class="form-control"
-                      id="area-of-specialization"
+                      id="main_tag"
                       required="required"
                     >
                       <option value="" selected="selected" disabled="disabled"
-                        >Select your area of specialization</option
+                        >Main tags</option
                       >
                       <option value="front-end">Illustration</option>
                       <option value="back-end">Free images</option>
                       <option value="full-stack">Codeing resource</option>
                     </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="other_tags" class="required">Main tag</label>
+                    <input
+                      class="form-control"
+                      name="hashtags"
+                      type="tags"
+                      id="other_tags"
+                      pattern="^#"
+                      placeholder="#hashtags"
+                    />
                   </div>
 
                   <div class="d-flex justify-content-end align-content-end">
@@ -382,7 +400,9 @@
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+  <script src="tags-input.js"></script>
   <script>
     halfmoon.toggleDarkMode();
+    [].forEach.call(document.querySelectorAll('input[type="tags"]'), tagsInput);
   </script>
 </html>
